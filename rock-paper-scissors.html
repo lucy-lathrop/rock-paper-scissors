@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+function computerPlay(){
+  const randomItem = Math.floor(Math.random() * 3 + 1);
+
+  if (randomItem === 1) {
+    return 'rock';
+  }
+  else if (randomItem === 2) {
+    return 'paper';
+  }
+  else if (randomItem === 3) {
+    return 'scissors';
+  }
+}
+
+let playerInput = window.prompt ('Choose one! Rock, Paper, or Scissors?')
+let playerSelection = playerInput.toLowerCase();
+let computerSelection = computerPlay();
+
+let playerScore = 0
+let computerScore = 0
+
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return "It's a tie!";
+  }
+  else if (playerSelection === 'rock' && computerSelection === 'paper') {
+    return 'You lose! Paper beats rock.'
+    computerWins ();
+  }
+  else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+    return 'You win! Scissors beat paper'
+    playerWins ();
+  }
+  else if (playerSelection === 'paper' && computerSelection === 'rock') {
+    return 'You win! Paper beats rock'
+    playerWins();
+  }
+  else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+    return 'You lose! Rock beats scissors'
+    computerWins();
+  }
+  else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+    return 'You win! Rock beats scissors'
+    playerWins();
+  }
+  else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+    return 'You lose! Scissors beat paper'
+    computerWins();
+  }
+}
+
+console.log(playRound(playerSelection, computerSelection));
+
+function game(){
+  for (let i = 0; i < 5; i++) {
+    playRound();
+
+  if (playerWins()) {
+    return 'Player has' + playerScore + 'points!'
+  }
+  if (computerWins()) {
+    return 'Computer has' + computerScore + 'points!'
+  }
+  }
+  console.log(playRound(playerSelection, computerPlay()));
+}
+
+function playerWins(){
+  playerScore++
+  return 'Player has' + playerScore + 'points!'
+}
+console.log(playerScore);
+
+function computerWins (){
+  computerScore++
+  return 'Computer has' + computerScore + 'points!'
+}
+console.log(computerScore);
+
+
+  </script>
+</body>
+</html>
