@@ -30,63 +30,68 @@ let computerSelection = computerPlay();
 let playerScore = 0
 let computerScore = 0
 
+let playerPoint = true
+let computerPoint = true
+
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return "It's a tie!";
   }
   else if (playerSelection === 'rock' && computerSelection === 'paper') {
-    return 'You lose! Paper beats rock.'
-    computerWins ();
+    return 'You lose! Paper beats rock.';
+    computerPoint;
   }
   else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-    return 'You win! Scissors beat paper'
-    playerWins ();
+    return 'You win! Scissors beat paper';
+    playerPoint;
   }
   else if (playerSelection === 'paper' && computerSelection === 'rock') {
-    return 'You win! Paper beats rock'
-    playerWins();
+    return 'You win! Paper beats rock';
+    playerPoint;
   }
   else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-    return 'You lose! Rock beats scissors'
-    computerWins();
+    return 'You lose! Rock beats scissors';
+    computerPoint;
   }
   else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-    return 'You win! Rock beats scissors'
-    playerWins();
+    return 'You win! Rock beats scissors';
+    playerPoint;
   }
   else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-    return 'You lose! Scissors beat paper'
-    computerWins();
+    return 'You lose! Scissors beat paper';
+    computerPoint;
   }
 }
 
 console.log(playRound(playerSelection, computerSelection));
 
-function game(){
-  for (let i = 0; i < 5; i++) {
-    playRound();
-
-  if (playerWins()) {
-    return 'Player has' + playerScore + 'points!'
-  }
-  if (computerWins()) {
-    return 'Computer has' + computerScore + 'points!'
-  }
-  }
-  console.log(playRound(playerSelection, computerPlay()));
-}
-
 function playerWins(){
   playerScore++
-  return 'Player has' + playerScore + 'points!'
+  return 'Player has ' + playerScore + ' points!'
 }
-console.log(playerScore);
 
-function computerWins (){
+function computerWins(){
   computerScore++
-  return 'Computer has' + computerScore + 'points!'
+  return 'Computer has ' + computerScore + ' points!'
 }
-console.log(computerScore);
+
+function game(playerWins, computerWins){
+  for (let i = 0; i < 5; i++) {
+    playRound();
+  }
+
+  if (playerPoint === 'true') {
+    playerWins
+  }
+  else if (computerPoint === 'true') {
+    computerWins
+  }
+}
+
+
+console.log(game(playerWins, computerWins));
+console.log(playerScore)
+console.log(computerScore)
 
 
   </script>
